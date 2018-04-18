@@ -21,10 +21,11 @@ class Panel {
     else this.pointWeight = DEFAULT_POINT_WEIGHT;
 
     switch (align) {
-      case "CENTER": {
-        this.pointsOffsetX = this.panelWidth / 4;
-        this.pointsOffsetY = this.panelHeight / 4;
-      }
+      case "CENTER":
+        {
+          this.pointsOffsetX = this.panelWidth / 4;
+          this.pointsOffsetY = this.panelHeight / 4;
+        }
         break;
     }
 
@@ -49,7 +50,7 @@ class Panel {
         this.points[i][j].move(this.panelX + (i * (this.panelWidth / this.xPoints)) + this.pointsOffsetX, this.panelY + (j * (this.panelHeight / this.yPoints)) + this.pointsOffsetY);
 
         switch (number) {
-          case 0:
+          case '0':
             {
               if (this.inTopLine(i, j) || this.inLeftLine(i, j) || this.inRightLine(i, j) || this.inBottomLine(i, j))
                 this.points[i][j].activate();
@@ -57,9 +58,8 @@ class Panel {
                 this.points[i][j].deactivate();
               this.points[i][j].display();
             }
-
             break;
-          case 1:
+          case '1':
             {
               if (this.inRightLine(i, j))
                 this.points[i][j].activate();
@@ -68,7 +68,7 @@ class Panel {
               this.points[i][j].display();
             }
             break;
-          case 2:
+          case '2':
             {
               if (this.inTopLine(i, j) || (i == this.xPoints - 1 && j <= this.yPoints / 2) || j == floor(this.yPoints / 2) || (i == 0 && j >= this.yPoints / 2) || this.inBottomLine(i, j))
                 this.points[i][j].activate();
@@ -77,7 +77,7 @@ class Panel {
               this.points[i][j].display();
             }
             break;
-          case 3:
+          case '3':
             {
               if (this.inTopLine(i, j) || this.inMiddleLine(i, j) || this.inRightLine(i, j) || this.inBottomLine(i, j))
                 this.points[i][j].activate();
@@ -86,54 +86,54 @@ class Panel {
               this.points[i][j].display();
             }
             break;
-          case 444:
+          case '4':
             {
-              if (j == 0 || (i == this.xPoints - 1 && j <= this.yPoints / 2) || j == floor(this.yPoints / 2) || (i == 0 && j >= this.yPoints / 2) || j == this.yPoints - 1)
+              if ((i == 0 && j <= this.yPoints / 2) || j == floor(this.yPoints / 2) || (i == floor(this.xPoints / 2) && j >= this.yPoints / 4))
                 this.points[i][j].activate();
               else
                 this.points[i][j].deactivate();
               this.points[i][j].display();
             }
             break;
-          case 5:
+          case '5':
             {
-              if (j == 0 || (i == this.xPoints - 1 && j <= this.yPoints / 2) || j == floor(this.yPoints / 2) || (i == 0 && j >= this.yPoints / 2) || j == this.yPoints - 1)
+              if ((i == 0 && j <= this.yPoints / 2) || (i == this.xPoints - 1 && j >= this.yPoints / 2) || this.inTopLine(i, j) || this.inBottomLine(i, j) || this.inMiddleLine(i, j))
                 this.points[i][j].activate();
               else
                 this.points[i][j].deactivate();
               this.points[i][j].display();
             }
             break;
-          case 6:
+          case '6':
             {
-              if (j == 0 || (i == this.xPoints - 1 && j <= this.yPoints / 2) || j == floor(this.yPoints / 2) || (i == 0 && j >= this.yPoints / 2) || j == this.yPoints - 1)
+              if ((i == this.xPoints - 1 && j >= this.yPoints / 2) || this.inMiddleLine(i, j) || this.inTopLine(i, j) || this.inBottomLine(i, j) || this.inLeftLine(i, j))
                 this.points[i][j].activate();
               else
                 this.points[i][j].deactivate();
               this.points[i][j].display();
             }
             break;
-          case 7:
+          case '7':
             {
-              if (j == 0 || (i == this.xPoints - 1 && j <= this.yPoints / 2) || j == floor(this.yPoints / 2) || (i == 0 && j >= this.yPoints / 2) || j == this.yPoints - 1)
+              if (this.inTopLine(i, j) || this.inRightLine(i, j))
                 this.points[i][j].activate();
               else
                 this.points[i][j].deactivate();
               this.points[i][j].display();
             }
             break;
-          case 8:
+          case '8':
             {
-              if (j == 0 || (i == this.xPoints - 1 && j <= this.yPoints / 2) || j == floor(this.yPoints / 2) || (i == 0 && j >= this.yPoints / 2) || j == this.yPoints - 1)
+              if (this.inTopLine(i, j) || this.inBottomLine(i, j) || this.inMiddleLine(i, j) || this.inLeftLine(i, j) || this.inRightLine(i, j))
                 this.points[i][j].activate();
               else
                 this.points[i][j].deactivate();
               this.points[i][j].display();
             }
             break;
-          case 9:
+          case '9':
             {
-              if (j == 0 || (i == this.xPoints - 1 && j <= this.yPoints / 2) || j == floor(this.yPoints / 2) || (i == 0 && j >= this.yPoints / 2) || j == this.yPoints - 1)
+              if ((i == 0 && j <= this.yPoints / 2) || this.inTopLine(i, j) || this.inBottomLine(i, j) || this.inMiddleLine(i, j) || this.inRightLine(i, j))
                 this.points[i][j].activate();
               else
                 this.points[i][j].deactivate();

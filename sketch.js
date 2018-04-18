@@ -16,33 +16,36 @@ function setup() {
   let currentX = PANEL_START_X;
   for (let i = 0; i < 8; i++) {
     if (i == 2 || i == 5) {
-      panels[i] = new Panel(currentX, PANEL_START_Y, PANEL_WIDTH / 2, PANEL_HEIGHT*0.8, 1, 2, 10, "CENTER");
+      panels[i] = new Panel(currentX, PANEL_START_Y, PANEL_WIDTH / 2, PANEL_HEIGHT * 0.8, 1, 2, 10, "CENTER");
       currentX += (PANEL_WIDTH / 2) + PANEL_MARGIN_RIGHT;
-    }
-    else {
+    } else {
       panels[i] = new Panel(currentX, PANEL_START_Y, PANEL_WIDTH, PANEL_HEIGHT);
       currentX += PANEL_WIDTH + PANEL_MARGIN_RIGHT;
     }
   }
-  /*
-  for (let i = 0; i < 8; i++) {
-    if (i == 2 || i == 5)
-      panels[i] = new Panel((i * (PANEL_WIDTH/2 + PANEL_MARGIN_RIGHT)) + PANEL_START_X, PANEL_START_Y, PANEL_WIDTH / 2, PANEL_HEIGHT, 1, 2, 10, "CENTER");
-    else
-      panels[i] = new Panel((i * (PANEL_WIDTH + PANEL_MARGIN_RIGHT)) + PANEL_START_X, PANEL_START_Y, PANEL_WIDTH, PANEL_HEIGHT);
-  }*/
 }
 
 function draw() {
   clear();
 
   if (seconds != second()) {
-    hours = hour();
-    minutes = minute();
-    seconds = second();
+    hours = hour().toString();
+    minutes = minute().toString();
+    seconds = second().toString();
 
-    for (p in panels)
-      panels[p].display(0);
+    if (hours.length < 2) hours = "0" + hours;
+    if (minutes.length < 2) minutes = "0" + minutes;
+    if (seconds.length < 2) seconds = "0" + seconds;
+
+    panels[0].display(hours[0]);
+    panels[1].display(hours[1]);
+    panels[2].display(":");
+    panels[3].display(minutes[0]);
+    panels[4].display(minutes[1]);
+    panels[5].display(":");
+    panels[6].display(seconds[0]);
+    panels[7].display(seconds[1]);
+
   } else {
     for (let pan = 0; pan < panels.length; pan++) {
       let panelPoints = panels[pan].GetPoints()
